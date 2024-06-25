@@ -27,6 +27,8 @@ function playRound(humanChoice, computerChoice) {
   } else if (result == "Computer wins") {
     computerScore += 1;
   }
+  console.log(`Computer's score: ${computerScore}`);
+  console.log(`Human's score: ${humanScore}`);
   return result;
 }
 
@@ -57,6 +59,7 @@ function playGame(rounds) {
     // Get human choice
     let getHumanChoice = prompt("Choose your weapon!");
     getHumanChoice = getHumanChoice.toLowerCase();
+    console.log(`Human's choice is ${getHumanChoice}`);
 
     //Check if human input is valid
     function checkInput(humanChoice) {
@@ -74,10 +77,6 @@ function playGame(rounds) {
     if (checkInput(getHumanChoice)) {
       playRound(getHumanChoice, getComputerChoice);
     }
-
-    console.log(`Human's choice is ${getHumanChoice}`);
   }
 }
 playGame(5);
-console.log(`Computer's score: ${computerScore}`);
-console.log(`Human's score: ${humanScore}`);

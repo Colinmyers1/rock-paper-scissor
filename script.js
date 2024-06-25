@@ -1,44 +1,3 @@
-// Get computer choice
-
-let getComputerChoice = Math.floor(Math.random() * 3);
-
-switch (getComputerChoice) {
-  case 0:
-    getComputerChoice = "rock";
-    console.log("Computers choice is rock");
-    break;
-
-  case 1:
-    getComputerChoice = "paper";
-    console.log("Computers choice is paper");
-    break;
-
-  case 2:
-    getComputerChoice = "scissors";
-    console.log("Computers choice is scissors");
-    break;
-}
-
-// Get human choice
-
-let getHumanChoice = prompt("Choose your weapon!");
-getHumanChoice = getHumanChoice.toLowerCase();
-
-//Check if human input is valid
-function checkInput(humanChoice) {
-  if (
-    getHumanChoice !== "rock" &&
-    getHumanChoice !== "paper" &&
-    getHumanChoice !== "scissors"
-  ) {
-    alert("You must pick rock paper or scissors!");
-    return false;
-  }
-  return true;
-}
-
-console.log(`Human's choice is ${getHumanChoice}`);
-
 // Initialize scores
 
 let computerScore = 0;
@@ -68,11 +27,57 @@ function playRound(humanChoice, computerChoice) {
   } else if (result == "Computer wins") {
     computerScore += 1;
   }
+  return result;
 }
 
-if (checkInput(getHumanChoice)) {
-  playRound(getHumanChoice, getComputerChoice);
-}
+// Play 5 games in a row to determine winner
 
+function playGame(rounds) {
+  for (let i = 0; i < rounds; i++) {
+    // Get computer choice
+    let getComputerChoice = Math.floor(Math.random() * 3);
+
+    switch (getComputerChoice) {
+      case 0:
+        getComputerChoice = "rock";
+        console.log("Computers choice is rock");
+        break;
+
+      case 1:
+        getComputerChoice = "paper";
+        console.log("Computers choice is paper");
+        break;
+
+      case 2:
+        getComputerChoice = "scissors";
+        console.log("Computers choice is scissors");
+        break;
+    }
+
+    // Get human choice
+    let getHumanChoice = prompt("Choose your weapon!");
+    getHumanChoice = getHumanChoice.toLowerCase();
+
+    //Check if human input is valid
+    function checkInput(humanChoice) {
+      if (
+        getHumanChoice !== "rock" &&
+        getHumanChoice !== "paper" &&
+        getHumanChoice !== "scissors"
+      ) {
+        alert("You must pick rock paper or scissors!");
+        return false;
+      }
+      return true;
+    }
+
+    if (checkInput(getHumanChoice)) {
+      playRound(getHumanChoice, getComputerChoice);
+    }
+
+    console.log(`Human's choice is ${getHumanChoice}`);
+  }
+}
+playGame(5);
 console.log(`Computer's score: ${computerScore}`);
 console.log(`Human's score: ${humanScore}`);
